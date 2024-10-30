@@ -66,3 +66,24 @@ function getArtistData(artist) {
 }
 
 getArtistData("lady gaga");
+
+// Script per i pulsanti del footer
+document.addEventListener("DOMContentLoaded", function () {
+  const playButton = document.querySelector(".play-btn");
+  document.querySelector(".shuffle-btn").addEventListener("click", function () {
+    this.classList.toggle("text-success");
+  });
+  
+  document.querySelector(".repeat-btn").addEventListener("click", function () {
+    this.classList.toggle("text-success");
+  });   
+
+  let isPlaying = false;
+
+  playButton.addEventListener("click", function () {
+    isPlaying = !isPlaying;
+    playButton.innerHTML = isPlaying
+      ? '<span class="fas fa-pause-circle"></span>'
+      : '<span class="fas fa-play-circle"></span>';
+  });
+});
