@@ -51,6 +51,16 @@
     color: white !important;
 }
 
+.friends-buttons .btn-link:focus,
+.friends-buttons .btn-links:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.friends-buttons .btn-link:active {
+    transform: scale(0.95);
+}
+
 footer {
     border-top: 1px solid grey;
 }

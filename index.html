@@ -52,7 +52,7 @@
 
         <!-- Main Content -->
         <main
-          class="col-md-9 p-4 vh-100 overflow-auto custom-scrollbar-css"
+          class="col-md-8 p-4 vh-100 overflow-auto custom-scrollbar-css"
           style="background-color: #121212"
         >
           <!-- Annuncio Nuovo Album -->
@@ -337,39 +337,42 @@
 
         <!-- Friends Activity -->
         <aside
-          class="col-md-1 text-white p-3 vh-100 overflow-auto"
+          class="col-md-2 text-white p-1 vh-100 overflow-auto"
           style="background-color: #000"
         >
-          <div class="container">
-            <div class="d-flex justify-content-end mb-3">
-              <!-- Icone per le azioni -->
-              <button class="btn btn-light mx-1">
-                <i class="bi bi-dash"></i>
+          <div class="container m-0 p-0">
+            <div class="d-flex justify-content-end mb-3 friends-buttons">
+              <div class="m-0 p-0 my-0">
+                <p>Attività amici</p>
+              </div>
+              <button class="btn btn-link text-light">
+                <ion-icon name="person-add-outline"></ion-icon>
               </button>
-              <!-- Rimpicciolisci -->
-              <button class="btn btn-light mx-1">
-                <i class="bi bi-square"></i>
+              <button class="btn btn-link text-light">
+                <ion-icon name="close-outline"></ion-icon>
               </button>
-              <!-- A finestra -->
-              <button class="btn btn-light mx-1">
-                <i class="bi bi-x"></i>
-              </button>
-              <!-- Chiudi -->
             </div>
-            <div class="card d-flex flex-row align-items-center p-2">
+            <div
+              class="card d-flex flex-row align-items-center p-2 friends-card"
+              style="background-color: #000"
+            >
               <!-- Immagine del profilo -->
               <div class="me-3">
                 <img
-                  src="profile.jpg"
+                  src="/assets/segnaposto-2.jpg"
                   class="rounded-circle"
                   style="width: 50px; height: 50px"
                   alt="Immagine profilo"
                 />
               </div>
               <!-- Dettagli amico -->
-              <div>
-                <h6 class="mb-0">Nome Amico</h6>
-                <small class="text-muted">Sta ascoltando: Nome Canzone</small>
+              <div class="mx-3 text-nowrap" style="font-size: small">
+                <p class="mb-0">Giovanni Muciaccia</p>
+                <small class="text-muted">What i've done</small>
+                <div>
+                  <ion-icon name="musical-notes-outline"></ion-icon>
+                  <small class="text-muted">Minutes to Midnight</small>
+                </div>
               </div>
             </div>
           </div>
