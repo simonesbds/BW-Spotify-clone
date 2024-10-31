@@ -15,28 +15,38 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body class="bg-secondary text-white">
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-bottom: 50px">
       <div class="row">
         <!-- Sidebar -->
         <nav
-          class="col-md-2 p-3 vh-100 text-white"
+          class="col-lg-2 p-3 text-white d-none d-lg-block"
           style="background-color: #000"
         >
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a href="#" class="nav-link text-secondary">
+              <button class="btn nav-link text-secondary">
                 <span class="fas fa-home"></span> Home
-              </a>
+              </button>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link text-secondary">
-                <span class="fas fa-search"></span> Cerca
-              </a>
+              <button class="btn nav-link text-secondary">
+                <span class="fas fa-book"></span> My Playlist
+              </button>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-secondary">
-                <span class="fas fa-book"></span> La tua libreria
-              </a>
+            <li class="nav-item my-2">
+              <form id="searchBar" role="search">
+                <input
+                  class="form-control mx-3 w-75 bg-dark my-1 text-light"
+                  type="search"
+                  name="searchInput"
+                  placeholder="Cerca"
+                  aria-label="Search"
+                  style="height: 25px"
+                />
+                <button type="submit" class="btn nav-link text-secondary">
+                  <span class="fas fa-search"></span> Cerca
+                </button>
+              </form>
             </li>
           </ul>
           <h6 class="mt-4">Playlist</h6>
@@ -52,7 +62,7 @@
 
         <!-- Main Content -->
         <main
-          class="col-md-8 p-4 vh-100 overflow-auto custom-scrollbar-css"
+          class="col-lg-8 p-4 vh-100 overflow-auto custom-scrollbar-css"
           style="background-color: #121212"
         >
           <!-- Annuncio Nuovo Album -->
@@ -61,283 +71,18 @@
             class="album-announcement bg-black text-white p-3 mb-4 rounded"
           ></section>
 
-          <!-- Sezione Buonasera -->
-          <section class="mb-4">
-            <h4>Buonasera</h4>
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <div
-                  class="card text-white p-2 d-flex flex-row"
-                  style="background-color: #212121"
-                >
-                  <div class="col-md-4 row">
-                    <img
-                      src="/assets/segnaposto-1.jpg"
-                      alt="Card Image"
-                      class="card-img img-fluid g-img"
-                    />
-                  </div>
-                  <div class="card-body p-2">
-                    <h5 class="card-title">Biancaneve e i sette albini</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div
-                  class="card text-white p-2 d-flex flex-row"
-                  style="background-color: #212121"
-                >
-                  <div class="col-md-4 row">
-                    <img
-                      src="/assets/segnaposto-1.jpg"
-                      alt="Card Image"
-                      class="card-img img-fluid g-img"
-                    />
-                  </div>
-                  <div class="card-body p-2">
-                    <h5 class="card-title">Biancaneve e i sette albini</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div
-                  class="card text-white p-2 d-flex flex-row"
-                  style="background-color: #212121"
-                >
-                  <div class="col-md-4 row">
-                    <img
-                      src="/assets/segnaposto-1.jpg"
-                      alt="Card Image"
-                      class="card-img img-fluid g-img"
-                    />
-                  </div>
-                  <div class="card-body p-2">
-                    <h5 class="card-title">Biancaneve e i sette albini</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div
-                  class="card text-white p-2 d-flex flex-row"
-                  style="background-color: #212121"
-                >
-                  <div class="col-md-4 row">
-                    <img
-                      src="/assets/segnaposto-1.jpg"
-                      alt="Card Image"
-                      class="card-img img-fluid g-img"
-                    />
-                  </div>
-                  <div class="card-body p-2">
-                    <h5 class="card-title">Biancaneve e i sette albini</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div
-                  class="card text-white p-2 d-flex flex-row"
-                  style="background-color: #212121"
-                >
-                  <div class="col-md-4 row">
-                    <img
-                      src="/assets/segnaposto-1.jpg"
-                      alt="Card Image"
-                      class="card-img img-fluid g-img"
-                    />
-                  </div>
-                  <div class="card-body p-2">
-                    <h5 class="card-title">Biancaneve e i sette albini</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div
-                  class="card text-white p-2 d-flex flex-row"
-                  style="background-color: #212121"
-                >
-                  <div class="col-md-4 row">
-                    <img
-                      src="/assets/segnaposto-1.jpg"
-                      alt="Card Image"
-                      class="card-img img-fluid g-img"
-                    />
-                  </div>
-                  <div class="card-body p-2">
-                    <h5 class="card-title">Biancaneve e i sette albini</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Sezione Altro di ciò che ti piace -->
+          <!-- Sezione Album Random -->
           <section>
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <h4>Altro di ciò che ti piace</h4>
-              <a
-                href="#"
-                class="text-light link-offset-2 link-underline link-underline-opacity-0"
-                >Visualizza altro</a
-              >
+            <div class="mb-2">
+              <h4>Alcuni album dell'artista</h4>
             </div>
-            <div class="row row-cols-5">
-              <div class="col mb-3">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-4">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col mb-3">
-                <div class="card text-white" style="background-color: #212121">
-                  <img
-                    src="/assets/segnaposto.jpg"
-                    alt="Playlist Cover"
-                    class="card-img-top"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Titolo Playlist</h5>
-                    <p class="card-text text-muted">
-                      Descrizione della playlist
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div class="row h-100" id="randomAlbums"></div>
           </section>
         </main>
 
         <!-- Friends Activity -->
         <aside
-          class="col-md-2 text-white p-3 vh-100 overflow-auto"
+          class="col-lg-2 text-white d-none d-lg-block p-3 vh-100 overflow-auto"
           style="background-color: #000"
         >
           <div class="d-flex justify-content-between">
@@ -371,21 +116,10 @@
 
     <!-- Footer Player -->
     <footer
+      id="footer"
       class="container-fluid fixed-bottom text-white p-2 d-flex justify-content-between align-items-center"
       style="background-color: #121212"
     >
-      <div class="d-flex align-items-center">
-        <img
-          src="album_cover.jpg"
-          alt="Album Cover"
-          class="rounded me-2"
-          style="width: 50px; height: 50px"
-        />
-        <div>
-          <p class="m-0">Titolo Canzone</p>
-          <p class="m-0 text-muted">Artista</p>
-        </div>
-      </div>
       <div class="d-flex align-items-center">
         <button class="btn btn-link text-white shuffle-btn">
           <span class="fas fa-random"></span>
@@ -411,8 +145,7 @@
         <input type="range" class="form-range" style="width: 100px" />
       </div>
     </footer>
-    <!--<script src="/js/index-script.js"></script>-->
-    <script src="/js/script.js"></script>
+    <script src="/js/index-script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>

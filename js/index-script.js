@@ -4,15 +4,14 @@ document.querySelector(".shuffle-btn").addEventListener("click", function () {
 
 document.querySelector(".repeat-btn").addEventListener("click", function () {
   this.classList.toggle("text-success");
-}); 
+});
 
-
-// prendo l'elemento dove appendere il div con all'interno il nome dell'artista, img dell'artista e i 4 album
-const main = document.querySelector("main");
+const firstSection = document.getElementById("top-page-artist");
+const randomAlbums = document.getElementById("randomAlbums");
+const footer = document.getElementById("footer");
 
 function getArtistData(artist) {
   let apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`;
-
   fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
@@ -22,62 +21,76 @@ function getArtistData(artist) {
     })
     .then((json) => {
       let data = json.data;
+      let artist = data[0].artist;
+      let album = data[0].album;
 
-      // filtra i risultati per includere solo gli album dell’artista specifico
-      let artistAlbums = data.filter(
-        (item) => item.artist.name.toLowerCase() === artist.toLowerCase()
-      );
+      const homePageArtist = document.createElement("div");
+      homePageArtist.innerHTML = `<div class="d-flex align-items-center">
+          <img
+            src="${artist.picture_xl}"
+            alt="Img: ${artist.name}"
+            class="img-fluid me-3 rounded"
+            style="width: 250px; height: 250px"
+          />
+          <div>
+            <div class="card-header">
+              <h6>${artist.name}</h6>
+              <h1 class="fs-1">${album.title}</h1>
+              <p class="fw-light">L'album più ascoltato</p>
+              <p class="fw-light">Clicca su Altro per i dettagli dell'artista</p>
+            </div>
+            <div class="d-flex align-items-center mx-2 me-2">
+              <a href="${artist.link}" target="_blank" class="btn btn-success mx-2 me-2">Play</a>
+              <a href="./artist.html?q=${artist.name}" target="_blank" class="btn btn-outline-light mx-2">Altro</a>
+            </div>
+          </div>
+        </div>`;
 
-      if (artistAlbums.length === 0) {
-        alert("Nessun risultato trovato per l'artista specificato.");
-        return;
-      }
+      firstSection.appendChild(homePageArtist);
+      getFooterInfo(album.cover, album.title, artist.name);
 
-      // estrarre le informazioni dell’artista
-      let artistInfo = artistAlbums[0].artist;
+      let albumIdArray = [];
+      let randomId = [];
 
-      // rimuovi duplicati di album usando un Set per l'ID
-      let uniqueAlbums = [];
-      let albumIds = new Set();
-      for (let item of artistAlbums) {
-        if (!albumIds.has(item.album.id)) {
-          albumIds.add(item.album.id);
-          uniqueAlbums.push(item.album);
+      data.forEach((element) => {
+        let albumId = element.album.id;
+        albumIdArray.push(albumId);
+      });
+
+      while (randomId.length < 12) {
+        let randomIndex = Math.floor(Math.random() * albumIdArray.length);
+        let selectedAlbumId = albumIdArray[randomIndex];
+        if (!randomId.includes(selectedAlbumId)) {
+          randomId.push(selectedAlbumId);
         }
       }
 
-      // mescola gli album in ordine casuale
-      uniqueAlbums = uniqueAlbums.sort(() => Math.random() - 0.5);
-
-      // prendi i primi 4 album mescolati
-      let selectedAlbums = uniqueAlbums.slice(0, 4);
-
-      // popola l'HTML con le informazioni dell'artista e i suoi album casuali
-      main.innerHTML = `
-        <div class="container-fluid">
-          <img src="${artistInfo.picture_medium}" alt="${artistInfo.name}" />
-          <h2><a href="pagina artista">${artistInfo.name}</a></h2>
-          <div id="artist-albums">
-            ${selectedAlbums
-              .map((album) => {
-                return `
-                <div class="album">
-                  <img src="${album.cover_medium}" alt="${album.title}">
-                  <h3>${album.title}</h3>
-                </div>`;
-              })
-              .join("")}
-          </div>
-          <a class="btn btn-primary" href="pagina album">Vai alla sezione album</a>
+      randomId.forEach((id) => {
+        let findId = data.find((e) => e.album.id === id);
+        if (findId) {
+          let album = findId.album;
+          const cardDiv = document.createElement("div");
+          cardDiv.classList.add(
+            "col-12",
+            "col-sm-6",
+            "col-md-4",
+            "col-lg-3",
+            "mb-3"
+          );
+          cardDiv.innerHTML = `<div class="card text-white text-center" style="background-color: #212121">
+        <img src="${album.cover}" alt="${album.title}" class="card-img-top" />
+        <div class="card-body d-flex flex-column justify-content-between" style="height: 210px">
+          <h6 class="card-title">${album.title}</h6>
+          <a href="./album.html?id=${album.id}" target="_blank" class="btn btn-outline-light">Tracklist</a>
         </div>
-      `;
+      </div>`;
+          randomAlbums.appendChild(cardDiv);
+        }
+      });
     })
     .catch((error) => console.error("Error:", error));
 }
 
-getArtistData("club dogo");
-
-/*
 // Prende il valore dall'input
 const searchBar = document.getElementById("searchBar");
 searchBar.addEventListener("submit", (e) => {
@@ -85,6 +98,26 @@ searchBar.addEventListener("submit", (e) => {
 
   // .elements accede solamente agli elementi che sono figli di un form
   const searchInput = searchBar.elements["searchInput"].value.toLowerCase();
-  artist = searchInput;
+  firstSection.innerHTML = "";
+  randomAlbums.innerHTML = "";
+  getArtistData(searchInput);
 });
-*/
+
+function getFooterInfo(img, title, artist) {
+  const footerInfo = document.createElement("div");
+  footerInfo.classList.add("d-flex", "align-items-center");
+  footerInfo.innerHTML = `
+    <img
+      src="${img}"
+      alt="${title}"
+      class="rounded me-2"
+      style="width: 50px; height: 50px"
+    />
+    <div>
+      <p class="mx-2 mb-0">${title}</p>
+      <p class="mx-2 mb-0 text-muted">${artist}</p>
+    </div>`;
+  footer.prepend(footerInfo);
+}
+
+getArtistData("lady gaga");
